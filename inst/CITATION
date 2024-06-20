@@ -1,0 +1,12 @@
+bibentry(
+  bibtype = "Article",
+  title = "Labeled Optimal Partitioning",
+  author = c(
+    person(c("Anuraag"), "Srivastava"),
+    person(c("Toby", "Dylan"), "Hocking")),
+  year = "2023",
+  journal = "Journal of Computational and Graphical Statistics",
+  volume = "38",
+  pages = "461--480",
+  issn = "0943-4062",
+  doi = "10.1007/s00180-022-01238-z")

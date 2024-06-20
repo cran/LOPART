@@ -38,7 +38,18 @@ Rcpp::DataFrame LOPART_interface
  double penalty_labeled = 0
  ) {
   int n_data = input_data.size();
+  if(n_data < 1){
+    Rcpp::stop("no data");
+  }
   int n_labels = input_label_changes.size();
+  int *input_label_start_ptr=0;
+  int *input_label_end_ptr=0;
+  int *input_label_changes_ptr=0;
+  if(0 < n_labels){
+    input_label_start_ptr = &input_label_start[0];
+    input_label_end_ptr = &input_label_end[0];
+    input_label_changes_ptr = &input_label_changes[0];
+  }
   if(input_label_start.size() != n_labels){
     Rcpp::stop("input_label_start and input_label_changes sizes must match");
   }
@@ -54,9 +65,9 @@ Rcpp::DataFrame LOPART_interface
   int status = LOPART
     (&input_data[0],
      n_data,
-     &input_label_start[0],
-     &input_label_end[0],
-     &input_label_changes[0],
+     input_label_start_ptr,
+     input_label_end_ptr,
+     input_label_changes_ptr,
      n_labels,
      penalty_unlabeled,
      penalty_labeled,
@@ -85,9 +96,6 @@ Rcpp::DataFrame LOPART_interface
   }
   if(status == ERROR_LABEL_END_MUST_BE_LESS_THAN_N_DATA){
     Rcpp::stop("label end must be less than n data");
-  }
-  if(status == ERROR_NO_DATA){
-    Rcpp::stop("no data");
   }
   if(status == ERROR_DATA_MUST_BE_FINITE){
     Rcpp::stop("data must be finite");

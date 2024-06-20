@@ -5,6 +5,11 @@
 
 using namespace Rcpp;
 
+#ifdef RCPP_USE_GLOBAL_ROSTREAM
+Rcpp::Rostream<true>&  Rcpp::Rcout = Rcpp::Rcpp_cout_get();
+Rcpp::Rostream<false>& Rcpp::Rcerr = Rcpp::Rcpp_cerr_get();
+#endif
+
 // LOPART_interface
 Rcpp::DataFrame LOPART_interface(Rcpp::NumericVector input_data, Rcpp::IntegerVector input_label_start, Rcpp::IntegerVector input_label_end, Rcpp::IntegerVector input_label_changes, int n_updates, double penalty_unlabeled, double penalty_labeled);
 RcppExport SEXP _LOPART_LOPART_interface(SEXP input_dataSEXP, SEXP input_label_startSEXP, SEXP input_label_endSEXP, SEXP input_label_changesSEXP, SEXP n_updatesSEXP, SEXP penalty_unlabeledSEXP, SEXP penalty_labeledSEXP) {

@@ -1,20 +1,21 @@
-TODOs
+Changes in version 2024.6.19
 
-2020.6.29
+- fix ubsan issue by only doing &vec[0] if length>0.
+- update citation in DESCRIPTION to Computational Statistics paper year/DOI.
+- added CITATION file.
 
-Add arXiv citation in DESCRIPTION.
+Changes in version 2020.6.29
 
-2020.6.6
+- Add arXiv citation in DESCRIPTION.
 
-n_updates parameter which controls how many dynamic programming
-updates are computed, default is data size which is same as previous
-behavior.
+Changes in version 2020.6.6
 
-2020.6.4
+- n_updates parameter which controls how many dynamic programming updates are computed, default is data size which is same as previous behavior.
 
-support for penalty=Inf, only penalize changes outside of labels.
+Changes in version 2020.6.4
 
-2020.6.1
+- support for penalty=Inf, only penalize changes outside of labels.
 
-First version coded for NeurIPS submission.
+Changes in version 2020.6.1
 
+- First version coded for NeurIPS submission. 
